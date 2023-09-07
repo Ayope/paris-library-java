@@ -1,32 +1,34 @@
-public class BorrowedBook {
-    private int borrowerId;
-    private int bookId;
+package model;
+
+public class Reservation {
+    private Borrower borrower;
+    private Book book;
     private String borrowingDate;
     private String returnDate;
     private String status;
 
-    public BorrowedBook(int borrowerId, int bookId, String borrowingDate, String returnDate, String status) {
-        this.borrowerId = borrowerId;
-        this.bookId = bookId;
+    public Reservation(Borrower borrower, Book book, String borrowingDate, String returnDate, String status) {
+        this.borrower = borrower;
+        this.book = book;
         this.borrowingDate = borrowingDate;
         this.returnDate = returnDate;
         this.status = status;
     }
 
-    public int getBorrowerId() {
-        return borrowerId;
+    public Borrower getborrower() {
+        return borrower;
     }
 
-    public void setBorrowerId(int borrowerId) {
-        this.borrowerId = borrowerId;
+    public void setborrower(Borrower borrower) {
+        this.borrower = borrower;
     }
 
-    public int getBookId() {
-        return bookId;
+    public Book getbook() {
+        return book;
     }
 
-    public void setBookId(int bookId) {
-        this.bookId = bookId;
+    public void setbook(Book book) {
+        this.book = book;
     }
 
     public String getBorrowingDate() {

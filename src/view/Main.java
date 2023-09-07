@@ -1,10 +1,15 @@
+package view;
+
+import model.User;
+
 import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) throws SQLException {
         Scanner scanner = new Scanner(System.in);
-        Admin admin = new Admin();
+        User user = new User();
         boolean exit = false;
         boolean logged = false;
 
@@ -29,7 +34,7 @@ public class Main {
                         System.out.println("Enter your password: ");
                         String password = scanner.nextLine();
 
-                        admin.register(fullname, email, password);
+                        user.register(fullname, email, password);
                         break;
 
                     case 2:
@@ -39,7 +44,7 @@ public class Main {
                         System.out.println("Enter your password: ");
                         password = scanner.nextLine();
 
-                        logged = admin.login(fullname, password);
+                        logged = user.login(fullname, password);
 
                         break;
 
@@ -56,7 +61,9 @@ public class Main {
             while (logged && !exit) {
                 System.out.println("------------Library App------------");
                 System.out.println("1-Logged Out");
+                System.out.println("2-Manage Books");
                 System.out.println("0-Exit");
+
                 int choice = scanner.nextInt();
                 scanner.nextLine();
 
@@ -64,6 +71,8 @@ public class Main {
                     case 1:
                         logged = false;
                         break;
+                    case 2:
+                        BookView.showBookManagementView();
                     case 0:
                         exit = true;
                         break;
