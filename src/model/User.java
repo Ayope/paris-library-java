@@ -1,32 +1,77 @@
 package model;
 
-import javax.xml.crypto.Data;
-import java.sql.Connection;
-
 public class User {
+    private int id;
     private String fullname;
     private String email;
     private String password;
 
-    public void register(String fullname, String email, String password){
+    private String role;
+
+    public User(){}
+
+    public User(int id, String fullname, String email, String password, String role) {
+        this.id = id;
         this.fullname = fullname;
         this.email = email;
         this.password = password;
-        System.out.println("You registered successfully");
+        this.role = role;
     }
 
-    public boolean login(String fullname, String password){
-        if(this.fullname != null && this.password != null){
-            if(this.fullname.equalsIgnoreCase(fullname) && this.password.equalsIgnoreCase(password)){
-                System.out.println("Welcome " + fullname);
-                return true;
-            }else{
-                System.out.println("Wrong Inputs");
-            }
-        }else {
-            System.out.println("Register First");
-        }
-
-        return false;
+    public User(String fullname, String email, String password, String role) {
+        this.fullname = fullname;
+        this.email = email;
+        this.password = password;
+        this.role = role;
     }
+
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
+    public User(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
 }

@@ -8,13 +8,22 @@ public class Book {
     private String isbn;
     private String title;
     private int quantity;
-    private Author author;
+    private String author;
     private ArrayList<Borrower> borrowers;
 
-    public Book(String isbn, String title, int quantity) {
+    public Book(int id, String isbn, String title, int quantity, String author) {
+        this.id = id;
         this.isbn = isbn;
         this.title = title;
         this.quantity = quantity;
+        this.author = author;
+    }
+
+    public Book(String isbn, String title, int quantity, String author) {
+        this.isbn = isbn;
+        this.title = title;
+        this.quantity = quantity;
+        this.author = author;
     }
 
     public int getId() {
@@ -47,6 +56,14 @@ public class Book {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     @Override
