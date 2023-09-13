@@ -7,10 +7,16 @@ public class Borrower extends User{
     private String CIN;
     private ArrayList<Book> books;
 
-    public Borrower(int id, String telephone, String CIN) {
-        super(id);
+    public Borrower(String fullname, String email, String telephone,  String cin) {
+        super(fullname, email, "borrower");
+        this.CIN = cin;
         this.telephone = telephone;
-        this.CIN = CIN;
+    }
+
+    public Borrower(int id, String fullname, String cin, String email, String telephone) {
+        super(id, fullname, email);
+        this.CIN = cin;
+        this.telephone = telephone;
     }
 
     public ArrayList<Book> getBooks() {

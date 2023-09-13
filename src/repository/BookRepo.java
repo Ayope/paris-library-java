@@ -58,7 +58,7 @@ public class BookRepo {
 
     public static ResultSet getBooksList() throws SQLException {
         statement = conn.createStatement();
-        String sql = "SELECT * FROM `books`";
+        String sql = "SELECT * FROM `books` WHERE books.quantity > 0";
         result = statement.executeQuery(sql);
         return result;
     }

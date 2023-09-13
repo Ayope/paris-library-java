@@ -3,6 +3,7 @@ package model;
 import java.time.LocalDate;
 
 public class Reservation {
+    private int id;
     private Borrower borrower;
     private Book book;
     private LocalDate borrowingDate;
@@ -17,9 +18,26 @@ public class Reservation {
         this.status = status;
     }
 
+    public Reservation(int id, Borrower borrower, Book book, LocalDate borrowingDate, LocalDate returnDate, String status) {
+        this.id = id;
+        this.borrower = borrower;
+        this.book = book;
+        this.borrowingDate = borrowingDate;
+        this.returnDate = returnDate;
+        this.status = status;
+    }
+
     public Reservation(Borrower borrower, Book book) {
         this.borrower = borrower;
         this.book = book;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Borrower getborrower() {

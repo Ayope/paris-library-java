@@ -1,10 +1,12 @@
 package service;
 
+import model.Borrower;
 import model.User;
 import repository.UserRepo;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -21,9 +23,13 @@ public class UserService {
             return false;
         }
 
-        Pattern passwordPattern = Pattern.compile(PASSWORD_REGEX);
-        Matcher passwordMatcher = passwordPattern.matcher(user.getPassword());
-        return passwordMatcher.find();
+        if(user.getPassword() != null){
+            Pattern passwordPattern = Pattern.compile(PASSWORD_REGEX);
+            Matcher passwordMatcher = passwordPattern.matcher(user.getPassword());
+            return passwordMatcher.find();
+        }
+
+        return true;
     }
 
     public static User login(User user) throws SQLException {
@@ -42,4 +48,6 @@ public class UserService {
         }
         return null;
     }
+
+
 }
