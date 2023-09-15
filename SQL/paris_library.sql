@@ -68,7 +68,7 @@ INSERT INTO borrowedbooks (borrower_id, book_id, borrowing_date, return_date, st
 
 DELIMITER $$
 CREATE TRIGGER after_borrowing
-AFTER INSERT ON borrowedbooks 
+AFTER INSERT ON reservation
 FOR EACH ROW
 BEGIN
   UPDATE `books` SET `quantity` = `quantity` - 1 WHERE id = NEW.book_id;
@@ -78,7 +78,7 @@ DELIMITER ;
 
 DELIMITER $$
 CREATE TRIGGER after_returning_or_loosing
-AFTER UPDATE ON borrowedbooks 
+AFTER UPDATE ON reservation
 FOR EACH ROW
 BEGIN
 	IF NEW.status = 'retourné' AND OLD.status != 'retourné' THEN
@@ -91,6 +91,13 @@ BEGIN
 END;
 $$
 DELIMITER ;
+
+CREATE EVENT check_if_return_day_passed
+ON SCHEDULE EVERY 1 DAY
+STARTS '2023-09-14 00:00:00'
+DO
+  UPDATE reservation SET status = "perdu" WHERE reservation.return_date < CURDATE();
+
 
 
 
